@@ -1,7 +1,11 @@
+BUYER = 1
+OWNER = 2
+BROKER = 3
+
 USER_TYPE_CHOICES = (
-    ("BUYER","BUYER"),
-    ("OWNER","OWNER"),
-    ("BROKER","BROKER")
+    (BUYER,"BUYER"),
+    (OWNER,"OWNER"),
+    (BROKER,"BROKER")
 )
 
 RERA_REGISTERED_CHOICES = (

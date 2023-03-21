@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'accounts',
+    'rest_framework',
 ]
+
+AUTH_USER_MODEL = 'accounts.PropScanUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

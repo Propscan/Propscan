@@ -7,7 +7,7 @@ from .app_settings import LICENSE_TYPE_CHOICES, USER_TYPE_CHOICES, RERA_REGISTER
 class PropScanUser(AbstractUser):
     phone_no = models.CharField(max_length=30)
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, default="BUYER",null=False)
-    email_id = models.EmailField(max_length=254)
+    email_id = models.EmailField(max_length=256,unique=True, null=True)
     def __str__(self):
         return self.phone_no
     
@@ -15,14 +15,14 @@ class Buyer(models.Model):
     user = models.OneToOneField(PropScanUser, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=256)
     def __str__(self):
-        return self.full_name
+        return self.user.email
     
 class Owner(models.Model):
     user = models.OneToOneField(PropScanUser, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=256)
     additional_phone_no = models.CharField(max_length=30)
     def __str__(self):
-        return self.full_name
+        return self.user.email
     
 class Broker(models.Model):
     user = models.OneToOneField(PropScanUser, on_delete=models.CASCADE)
@@ -40,4 +40,4 @@ class Broker(models.Model):
     landline_number_1 = models.CharField(max_length=30, null=True)
     landline_number_2 = models.CharField(max_length=30, null=True)
     def __str__(self):
-        return self.full_name
+        return self.user.email
