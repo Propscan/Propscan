@@ -40,7 +40,11 @@ INSTALLED_APPS = [
 
     'accounts',
     'rest_framework',
+    'wallet',
 ]
+
+RAZORPAY_KEY_ID = "your_razorpay_key_id"
+RAZORPAY_KEY_SECRET = "your_razorpay_key_secret"
 
 AUTH_USER_MODEL = 'accounts.PropScanUser'
 
