@@ -1,10 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from .app_settings import LICENSE_TYPE_CHOICES, USER_TYPE_CHOICES, RERA_REGISTERED_CHOICES
+
 
 # Create your models here.
 
 class PropScanUser(AbstractUser):
+    BUYER = 1
+    OWNER = 2
+    BROKER = 3
+
+    USER_TYPE_CHOICES = [
+    (BUYER,"BUYER"),
+    (OWNER,"OWNER"),
+    (BROKER,"BROKER")
+    ]
     phone_no = models.CharField(max_length=30)
     user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, default="BUYER",null=False)
     email_id = models.EmailField(max_length=256,unique=True, null=True)
@@ -25,7 +34,26 @@ class Owner(models.Model):
         return self.user.email
     
 class Broker(models.Model):
-    user = models.OneToOneField(PropScanUser, on_delete=models.CASCADE)
+    BUYER = 1
+    OWNER = 2
+    BROKER = 3
+
+    USER_TYPE_CHOICES = [
+    ("BUYER","BUYER"),
+    ("OWNER","OWNER"),
+    ("BROKER","BROKER")
+    ]
+    LICENSE_TYPE_CHOICES = [
+    ("1", "Individual"),
+    ("2", "Firm")
+    ]
+    RERA_REGISTERED_CHOICES = [
+    ("1","Yes"),
+    ("2","I have applied"),
+    ("3","Not Applicable")
+    ]
+    user=models.CharField(max_length=256, blank=True, null=True)
+    email=models.CharField(max_length=256, blank=True, null=True)
     full_name = models.CharField(max_length=256)
     rera_registered = models.CharField(max_length=10, choices=RERA_REGISTERED_CHOICES)
     license_type = models.CharField(max_length=20, choices=LICENSE_TYPE_CHOICES)
@@ -39,5 +67,4 @@ class Broker(models.Model):
     additional_phone_no_2 = models.CharField(max_length=30, null=True)
     landline_number_1 = models.CharField(max_length=30, null=True)
     landline_number_2 = models.CharField(max_length=30, null=True)
-    def __str__(self):
-        return self.user.email
+   

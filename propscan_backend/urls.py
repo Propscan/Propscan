@@ -19,12 +19,15 @@ from . import views
 
 
 urlpatterns = [
-    # path('',views.homepage),
+    path('',views.homepage),
     path('admin/', admin.site.urls),
-    # path('login/',views.login,name="login"),
-    # path('register_broker/',views.register_broker,name="register_broker"),
-    # path('register_user/',views.register_user,name='register_user'),
-    # path('wallet/', include('wallet.urls')),
+    path('login/',views.login,name="login"),
+    path('register_broker/',views.register_broker,name="register_broker"),
+    path('register_user/',views.register_user,name='register_user'),
+    path('wallet/', include('wallet.urls')),
     path('property/',include('property_listing.urls')),
+
+
+
 
 ]

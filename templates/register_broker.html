@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% comment %} <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -128,4 +128,9 @@
     </form>
 	<script src="index.js"></script>
   </body>
-</html>
+</html> {% endcomment %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
