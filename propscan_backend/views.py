@@ -24,7 +24,7 @@ def register_broker(request):
             mymodel=PropScanUser.objects.create_user(username=user,email_id=email_id,phone_no=phone,user_type=user_type)
             
             
-            form.instance.user = request.user
+            form.instance.user = user
             form.save()
             return HttpResponse('Thank you for your registration.')
     else:
