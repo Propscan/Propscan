@@ -32,6 +32,13 @@ class PropertyType1(models.Model):
         ('price_negotiable', 'Price Negotiable'),
     ]
 
+    LISTING_TYPE_CHOICES = [
+        ('rent','Rent'),
+        ('sell','Sell'),
+        ('pg','PG'),
+    ]
+
+    listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
     city = models.CharField(max_length=100)
     locality = models.CharField(max_length=100)
@@ -40,6 +47,7 @@ class PropertyType1(models.Model):
     flat_number = models.CharField(max_length=20, null=True, blank=True)
     house_number = models.CharField(max_length=20, null=True, blank=True)
     floor_number = models.CharField(max_length=20, null=True, blank=True)
+    #testting
     bhk_type = models.CharField(max_length=10)
     bedrooms = models.PositiveSmallIntegerField()
     bathrooms = models.PositiveSmallIntegerField()
@@ -82,9 +90,6 @@ class PropertyType1(models.Model):
     def __str__(self):
         return f"{self.property_type} in {self.locality_society} - {self.expected_price}"
 
-
-from django.db import models
-
 class PropertyType2(models.Model):
     PROPERTY_TYPE_CHOICES = [
         ('studio', 'Studio Apartment'),
@@ -103,6 +108,13 @@ class PropertyType2(models.Model):
         ('power_of_attorney', 'Power of Attorney')
     ]
 
+    LISTING_TYPE_CHOICES = [
+        ('rent','Rent'),
+        ('sell','Sell'),
+        ('pg','PG'),
+    ]
+
+    listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
     city = models.CharField(max_length=100)
     locality = models.CharField(max_length=100)
@@ -124,7 +136,7 @@ class PropertyType2(models.Model):
     floor_number = models.PositiveSmallIntegerField()
     availability_status = models.CharField(max_length=20)
     age_of_property = models.PositiveSmallIntegerField()
-    image_links = models.TextField()
+    image_links = models.URLField(max_length=200)
     ownership = models.CharField(max_length=20, choices=OWNERSHIP_CHOICES)
     expected_price = models.DecimalField(max_digits=12, decimal_places=2)
     price_per_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
