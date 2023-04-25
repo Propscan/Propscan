@@ -21,10 +21,9 @@ class PropScanUser(AbstractUser):
         return self.phone_no
     
 class Buyer(models.Model):
-    user = models.OneToOneField(PropScanUser, on_delete=models.CASCADE)
+    phone_no = models.CharField(max_length=30)
     full_name = models.CharField(max_length=256)
-    def __str__(self):
-        return self.user.email
+    
     
 class Owner(models.Model):
     user = models.OneToOneField(PropScanUser, on_delete=models.CASCADE)

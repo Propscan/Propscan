@@ -1,15 +1,62 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .forms import broker_form
+from .forms import broker_form, buyer_reg
 from accounts.models import PropScanUser, Buyer, Owner, Broker
+import random
+import requests
 
 
 def homepage(request):
     return render(request, 'index.html')
+otp=0
 def login(request):
+    otp=random.randint(1000,9999)
+    if request.method == 'POST':
+        if 'otp_btn' in request.POST:
+            mobile = request.POST.get('mobile')
+            print(mobile)
+            api_key='bc0ce789-da06-11ed-addf-0200cd936042'
+            url = f'https://2factor.in/API/V1/{api_key}/SMS/{mobile}/{otp}'
+            try:
+                res = requests.get(url)
+                res.raise_for_status()
+                print('OTP sent successfully')
+            except requests.exceptions.HTTPError as e:
+                print(f'HTTP error occurred: {e}')
+            except Exception as e:
+                print(f'Error occurred: {e}')
+            context = {
+                'mobile': mobile,
+             'otp_sent': otp
+                }
+            return render(request, 'login.html',context)
+        if 'sub_btn' in request.POST:
+            otp = request.POST.get('otp')
+            if otp== otp:
+                return HttpResponse('OTP verified successfully')
+            else:
+                print('Invalid OTP')
+                return HttpResponse('Invalid OTP')
+                  
     return render(request, 'login.html')
+
+
 def register_user(request):
-    return render(request, 'register_user.html')
+    if request.method=='POST':
+        form=buyer_reg(request.POST)
+        if form.is_valid():
+            user=form.cleaned_data['fullname']
+            email=form.cleaned_data['emailid']
+            user_type="BUYER"
+            phone=form.cleaned_data['phone_no']
+            
+            mymodel=PropScanUser.objects.create_user(username=user,email_id=email,phone_no=phone,user_type=user_type)
+            
+            buyermodel=Buyer.objects.create(phone_no=phone,full_name=user)
+            return HttpResponse('Thank you for your registration.')
+    else:
+        form=buyer_reg()
+    return render(request, 'register_user.html', {'form': form})
 
 
 def register_broker(request):
