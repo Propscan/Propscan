@@ -129,8 +129,11 @@
 	<script src="index.js"></script>
   </body>
 </html> {% endcomment %}
-<form method="POST">
+{% block content %}
+
+  <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Submit</button>
-</form>
+  </form>
+{% endblock %}

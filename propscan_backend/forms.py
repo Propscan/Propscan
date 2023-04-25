@@ -13,6 +13,8 @@ class buyer_reg(forms.Form):
         emailid=forms.EmailField(max_length=256)
         phone_no=forms.CharField(max_length=30)
 
-         
+class login(forms.Form):
+        phone_no=forms.CharField(max_length=30)
+        otp=forms.CharField(max_length=6)
 
         

@@ -10,26 +10,32 @@ def homepage(request):
     return render(request, 'index.html')
 otp=0
 def login(request):
+    
+    
     otp=random.randint(1000,9999)
     if request.method == 'POST':
         if 'otp_btn' in request.POST:
             mobile = request.POST.get('mobile')
-            print(mobile)
-            api_key='bc0ce789-da06-11ed-addf-0200cd936042'
-            url = f'https://2factor.in/API/V1/{api_key}/SMS/{mobile}/{otp}'
-            try:
-                res = requests.get(url)
-                res.raise_for_status()
-                print('OTP sent successfully')
-            except requests.exceptions.HTTPError as e:
-                print(f'HTTP error occurred: {e}')
-            except Exception as e:
-                print(f'Error occurred: {e}')
-            context = {
-                'mobile': mobile,
-             'otp_sent': otp
-                }
-            return render(request, 'login.html',context)
+            exists=PropScanUser.objects.filter(phone_no=mobile).exists()
+            if exists:
+                print(mobile)
+                api_key='bc0ce789-da06-11ed-addf-0200cd936042'
+                url = f'https://2factor.in/API/V1/{api_key}/SMS/{mobile}/{otp}'
+                try:
+                    res = requests.get(url)
+                    res.raise_for_status()
+                    print('OTP sent successfully')
+                except requests.exceptions.HTTPError as e:
+                    print(f'HTTP error occurred: {e}')
+                except Exception as e:
+                    print(f'Error occurred: {e}')
+                context = {
+                    'mobile': mobile,
+                'otp_sent': otp
+                    }
+                return render(request, 'login.html',context)
+            else:
+                return HttpResponse('User does not exist')
         if 'sub_btn' in request.POST:
             otp = request.POST.get('otp')
             if otp== otp:
