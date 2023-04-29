@@ -1,5 +1,7 @@
 from django.db import models
 
+from accounts.models import PropScanUser
+
 
 class PropertyType1(models.Model):
     PROPERTY_TYPE_CHOICES = [
@@ -38,7 +40,16 @@ class PropertyType1(models.Model):
         ('pg','PG'),
     ]
 
+    PROPERTY_SUB_TYPE_CHOICES = [
+        ('resedential','Resedential'),
+        ('commercial','Commercial')
+    ]
+
+    user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
+    is_listed = models.BooleanField(default=True)
+
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
+    property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
     city = models.CharField(max_length=100)
     locality = models.CharField(max_length=100)
@@ -47,7 +58,6 @@ class PropertyType1(models.Model):
     flat_number = models.CharField(max_length=20, null=True, blank=True)
     house_number = models.CharField(max_length=20, null=True, blank=True)
     floor_number = models.CharField(max_length=20, null=True, blank=True)
-    #testting
     bhk_type = models.CharField(max_length=10)
     bedrooms = models.PositiveSmallIntegerField()
     bathrooms = models.PositiveSmallIntegerField()
@@ -114,8 +124,22 @@ class PropertyType2(models.Model):
         ('pg','PG'),
     ]
 
+    PROPERTY_SUB_TYPE_CHOICES = [
+        ('resedential','Resedential'),
+        ('commercial','Commercial')
+    ]
+
+    PROPERTY_AVAILABILITY_CHOICES = [
+        ('ready_to_move', 'Ready to Move'),
+        ('under_construction', 'Under Construction'),
+    ]
+
+    user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
+    is_listed = models.BooleanField(default=True)
+
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
+    property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES)
     city = models.CharField(max_length=100)
     locality = models.CharField(max_length=100)
     locality_society = models.CharField(max_length=100)
@@ -134,9 +158,9 @@ class PropertyType2(models.Model):
     covered_parking = models.BooleanField()
     total_floors = models.PositiveSmallIntegerField()
     floor_number = models.PositiveSmallIntegerField()
-    availability_status = models.CharField(max_length=20)
+    availability_status = models.CharField(max_length=20,choices=PROPERTY_AVAILABILITY_CHOICES)
     age_of_property = models.PositiveSmallIntegerField()
-    image_links = models.URLField(max_length=200)
+    images_links = models.URLField(max_length=200)
     ownership = models.CharField(max_length=20, choices=OWNERSHIP_CHOICES)
     expected_price = models.DecimalField(max_digits=12, decimal_places=2)
     price_per_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
