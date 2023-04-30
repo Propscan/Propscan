@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'wallet',
     'property_listing',
-    'channels'
+    'daphne'
 ]
 
 RAZORPAY_KEY_ID = "your_razorpay_key_id"
