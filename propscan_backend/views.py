@@ -4,6 +4,7 @@ from .forms import broker_form, buyer_reg
 from accounts.models import PropScanUser, Buyer, Owner, Broker
 import random
 import requests
+from .settings import api_key
 
 
 def homepage(request):
@@ -19,7 +20,7 @@ def login(request):
             exists=PropScanUser.objects.filter(phone_no=mobile).exists()
             if exists:
                 print(mobile)
-                api_key='bc0ce789-da06-11ed-addf-0200cd936042'
+               
                 url = f'https://2factor.in/API/V1/{api_key}/SMS/{mobile}/{otp}'
                 try:
                     res = requests.get(url)

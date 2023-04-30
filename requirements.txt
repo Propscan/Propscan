@@ -1,0 +1,7 @@
+Pillow ,
+djangorestframework,
+psycopg2,
+django-request,
+requests,
+razorpay,
+python -m pip install -U channels

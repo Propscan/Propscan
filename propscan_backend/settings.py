@@ -22,6 +22,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-oj-kd=)hspm1e6$18om&-4bi**qm58y@3&gdvr*3m9!kir6tz+'
 
+api_key='bc0ce789-da06-11ed-addf-0200cd936042'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'wallet',
     'property_listing',
+    'channels'
 ]
 
 RAZORPAY_KEY_ID = "your_razorpay_key_id"
@@ -78,8 +81,8 @@ TEMPLATES = [
         },
     },
 ]
-
-WSGI_APPLICATION = 'propscan_backend.wsgi.application'
+ASGI_APPLICATION = 'propscan_backend.asgi.application'
+# WSGI_APPLICATION = 'propscan_backend.wsgi.application'
 
 
 # Database
@@ -137,3 +140,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CHANNEL_LAYERS = {
+	"default": {
+		"BACKEND": "channels.layers.InMemoryChannelLayer"
+	}
+}
+LOGIN_REDIRECT_URL = "chat-page"

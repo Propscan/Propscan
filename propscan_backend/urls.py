@@ -26,6 +26,7 @@ urlpatterns = [
     path('register_user/',views.register_user,name='register_user'),
     path('wallet/', include('wallet.urls')),
     path('property/',include('property_listing.urls')),
+    path("", include("chat.urls")),
 
 
 
