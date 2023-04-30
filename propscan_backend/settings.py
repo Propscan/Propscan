@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,13 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'daphne',
     'django.contrib.staticfiles',
 
     'accounts',
     'rest_framework',
     'wallet',
     'property_listing',
-    'daphne'
+    
 ]
 
 RAZORPAY_KEY_ID = "your_razorpay_key_id"
@@ -82,7 +85,7 @@ TEMPLATES = [
     },
 ]
 ASGI_APPLICATION = 'propscan_backend.asgi.application'
-# WSGI_APPLICATION = 'propscan_backend.wsgi.application'
+WSGI_APPLICATION = 'propscan_backend.wsgi.application'
 
 
 # Database

@@ -5,3 +5,5 @@ django-request,
 requests,
 razorpay,
 python -m pip install -U channels
+
+command to run the project -  daphne propscan_backend.asgi:application
