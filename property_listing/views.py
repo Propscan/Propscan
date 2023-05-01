@@ -2,7 +2,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializers import PropertyType1Serializer, PropertyType1LargeCardSerializer, PropertyType1SmallCardSerializer
 from .serializers import PropertyType2Serializer, PropertyType2LargeCardSerializer, PropertyType2SmallCardSerializer
-from .models import PropertyType1,PropertyType2
+from .serializers import PropertyType3Serializer, PropertyType3LargeCardSerializer, PropertyType3SmallCardSerializer
+from .models import PropertyType1, PropertyType2, PropertyType3
 from rest_framework import status
 
 #TYPE 1 VIEWS
@@ -87,4 +88,46 @@ def unlist_type2(request, property_id):
     property_instance.save()
 
     serializer = PropertyType2Serializer(property_instance)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+#TYPE3 VIEWS
+@api_view(['POST'])
+def create_type3(request):
+    serializer = PropertyType3Serializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message": "Property Created Successfully"}, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def getfull_type3(request):
+    properties = PropertyType3.objects.filter(is_listed=True)
+    serializer = PropertyType3Serializer(properties, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def smallcard_type3(request):
+    properties = PropertyType3.objects.filter(is_listed=True)
+    serializer =  PropertyType3SmallCardSerializer(properties, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def largecard_type3(request):
+    properties = PropertyType3.objects.filter(is_listed=True)
+    serializer =  PropertyType3LargeCardSerializer(properties, many=True)
+    return Response(serializer.data)
+
+@api_view(['PUT'])
+def unlist_type3(request, property_id):
+    try:
+        property_instance = PropertyType3.objects.get(pk=property_id)
+    except PropertyType3.DoesNotExist:
+        return Response({"detail": "Property not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    property_instance.is_listed = False
+    property_instance.save()
+
+    serializer = PropertyType3Serializer(property_instance)
     return Response(serializer.data, status=status.HTTP_200_OK)

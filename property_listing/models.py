@@ -1,4 +1,7 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils import timezone
+import datetime
 
 from accounts.models import PropScanUser
 
@@ -7,7 +10,7 @@ class PropertyType1(models.Model):
     PROPERTY_TYPE_CHOICES = [
         ('flat', 'Flat'),
         ('villa', 'Villa'),
-        ('builder_floor', 'Builder Floor'),
+        ('builder_floor', 'Builder Floor')
     ]
 
     FURNISHING_CHOICES = [
@@ -44,6 +47,11 @@ class PropertyType1(models.Model):
         ('resedential','Resedential'),
         ('commercial','Commercial')
     ]
+    
+    BROKERAGE_TYPE_CHOICES =[
+        ('fixed','Fixed'),
+        ('percentage_of_price','Percentage of price')
+    ]
 
     user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
     is_listed = models.BooleanField(default=True)
@@ -79,10 +87,11 @@ class PropertyType1(models.Model):
     booking_amount = models.PositiveIntegerField()
     annual_dues_payable = models.PositiveIntegerField()
     membership_charge = models.PositiveIntegerField()
-    description = models.TextField()
+    unique_description = models.TextField()
     brokerage = models.BooleanField()
-    brokerage_amount = models.PositiveIntegerField(null=True, blank=True)
-    negotiable = models.BooleanField()
+    brokerage_type = models.CharField(max_length=20, choices=BROKERAGE_TYPE_CHOICES, null=True)
+    brokerage_amount = models.PositiveIntegerField(null=True)
+    negotiable = models.BooleanField(null=True)
     maintenance_staff = models.BooleanField()
     water_storage = models.BooleanField()
     rain_water_harvesting = models.BooleanField()
@@ -102,7 +111,7 @@ class PropertyType1(models.Model):
 
 class PropertyType2(models.Model):
     PROPERTY_TYPE_CHOICES = [
-        ('studio', 'Studio Apartment'),
+        ('studio_apt', 'Studio Apartment'),
         ('serviced', 'Serviced Apartment'),
         ('farmhouse', 'Farmhouse')
     ]
@@ -132,6 +141,11 @@ class PropertyType2(models.Model):
     PROPERTY_AVAILABILITY_CHOICES = [
         ('ready_to_move', 'Ready to Move'),
         ('under_construction', 'Under Construction'),
+    ]
+
+    BROKERAGE_TYPE_CHOICES =[
+        ('fixed','Fixed'),
+        ('percentage_of_price','Percentage of price')
     ]
 
     user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
@@ -174,8 +188,9 @@ class PropertyType2(models.Model):
     membership_charge = models.DecimalField(max_digits=10, decimal_places=2)
     unique_description = models.TextField()
     brokerage = models.BooleanField()
-    brokerage_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    negotiable = models.BooleanField()
+    brokerage_type = models.CharField(max_length=20, choices=BROKERAGE_TYPE_CHOICES, null=True)
+    brokerage_amount = models.PositiveIntegerField(max_digits=10, decimal_places=2, null=True)
+    negotiable = models.BooleanField(null=True)
     maintenance_staff = models.BooleanField()
     water_storage = models.BooleanField()
     rain_water_harvesting = models.BooleanField()
@@ -193,3 +208,89 @@ class PropertyType2(models.Model):
     def __str__(self):
         return f"{self.property_type} in {self.locality_society} - {self.expected_price}"
 
+
+class PropertyType3(models.Model):
+    PROPERTY_TYPE_CHOICES = [
+        ('plot', 'Plot'),
+    ]
+    OWNERSHIP_CHOICES = [
+        ('leasehold', 'Leasehold'),
+        ('co-op_society', 'Co-op Society'),
+        ('power_of_attorney', 'Power of Attorney'),
+    ]
+    LISTING_TYPE_CHOICES = [
+        ('rent','Rent'),
+        ('sell','Sell'),
+        ('pg','PG'),
+    ]
+    PROPERTY_SUB_TYPE_CHOICES = [
+        ('resedential','Resedential'),
+        ('commercial','Commercial')
+    ]
+    PROPERTY_APPROVING_AUTHORITY_CHOICES = [
+        ('rcuda', 'RCUDA'),
+        ('cidc', 'CIDC'),
+        ('nmmc', 'NMMC'),
+    ]
+    BROKERAGE_TYPE_CHOICES =[
+        ('fixed','Fixed'),
+        ('percentage_of_price','Percentage of price')
+    ]
+
+    user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
+    is_listed = models.BooleanField(default=True)
+
+    listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
+    property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
+    property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES)
+    city = models.CharField(max_length=100)
+    locality = models.CharField(max_length=100)
+    locality_society = models.CharField(max_length=100)
+    sub_locality = models.CharField(max_length=100)
+    plot_number = models.CharField(max_length=50)
+    plot_area = models.DecimalField(max_digits=10, decimal_places=2)
+    length = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    breadth = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    boundary_wall = models.BooleanField()
+    number_of_open_sides = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(4)])
+    any_construction_done = models.BooleanField()
+    no_of_sheds_constructed = models.PositiveIntegerField(null=True)
+    no_of_rooms_constructed = models.PositiveIntegerField(null=True)
+    no_of_washrooms_constructed = models.PositiveIntegerField(null=True)
+    number_of_floors_allowed_for_construction = models.PositiveIntegerField(validators=[MinValueValidator(1)])
+    possession_expected_date = models.DateField(default=timezone.now().replace(day=1) + datetime.timedelta(days=31))
+    images_link = models.URLField(max_length=200)
+    ownership = models.CharField(max_length=20, choices=OWNERSHIP_CHOICES)
+    property_approving_authority = models.CharField(max_length=10, choices=PROPERTY_APPROVING_AUTHORITY_CHOICES)
+    expected_price = models.DecimalField(max_digits=12, decimal_places=2)
+    price_per_sq_ft = models.DecimalField(max_digits=10, decimal_places=2)
+    all_inclusive_price = models.BooleanField()
+    tax_and_govt_charges_excluded = models.BooleanField()
+    price_negotiable = models.BooleanField()
+    maintenance_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    expected_rental = models.DecimalField(max_digits=10, decimal_places=2)
+    booking_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    annual_dues_payable = models.DecimalField(max_digits=10, decimal_places=2)
+    membership_charge = models.DecimalField(max_digits=10, decimal_places=2)
+    unique_description = models.TextField()
+    brokerage = models.BooleanField()
+    brokerage_type = models.CharField(max_length=20, choices=BROKERAGE_TYPE_CHOICES, null=True)
+    brokerage_amount = models.PositiveIntegerField(max_digits=10, decimal_places=2, null=True)
+    negotiable = models.BooleanField(null=True)
+    maintenance_staff = models.BooleanField()
+    water_storage = models.BooleanField()
+    rain_water_harvesting = models.BooleanField()
+    vaastu_compliant = models.BooleanField()
+    solar_panels = models.BooleanField()
+    overlooking_pool = models.BooleanField()
+    overlooking_park = models.BooleanField()
+    overlooking_club = models.BooleanField()
+    overlooking_main_road = models.BooleanField()
+    gated_society = models.BooleanField()
+    corner_property = models.BooleanField()
+    property_facing_direction = models.CharField(max_length=20)
+    location_advantages = models.TextField()
+
+    def __str__(self):
+        return f"{self.property_type} in {self.locality_society} - {self.expected_price}"
+    
