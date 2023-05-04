@@ -275,7 +275,7 @@ class PropertyType3(models.Model):
     unique_description = models.TextField()
     brokerage = models.BooleanField()
     brokerage_type = models.CharField(max_length=20, choices=BROKERAGE_TYPE_CHOICES, null=True)
-    brokerage_amount = models.PositiveIntegerField(max_digits=10, decimal_places=2, null=True)
+    brokerage_amount = models.PositiveIntegerField(null=True)
     negotiable = models.BooleanField(null=True)
     maintenance_staff = models.BooleanField()
     water_storage = models.BooleanField()
