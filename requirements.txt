@@ -4,6 +4,8 @@ psycopg2,
 django-request,
 requests,
 razorpay,
+django-filter,
+daphne,
 python -m pip install -U channels
 
 command to run the project -  daphne propscan_backend.asgi:application

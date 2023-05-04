@@ -7,7 +7,7 @@ class PropertyType1Filter(django_filters.FilterSet):
         model = PropertyType1
         fields = {
             'listing_type': ['exact', 'icontains'],
-            'user': ['exact', 'icontains'],
+            'user': ['exact'],
         }
 
 class PropertyType2Filter(django_filters.FilterSet):
@@ -15,7 +15,7 @@ class PropertyType2Filter(django_filters.FilterSet):
         model = PropertyType2
         fields = {
             'listing_type': ['exact', 'icontains'],
-            'user': ['exact', 'icontains'],
+            'user': ['exact'],
         }
 
 class PropertyType3Filter(django_filters.FilterSet):
@@ -23,5 +23,5 @@ class PropertyType3Filter(django_filters.FilterSet):
         model = PropertyType3
         fields = {
             'listing_type': ['exact', 'icontains'],
-            'user': ['exact', 'icontains'],
+            'user': ['exact'],
         }
