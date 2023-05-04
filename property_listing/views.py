@@ -5,6 +5,7 @@ from .serializers import PropertyType2Serializer, PropertyType2LargeCardSerializ
 from .serializers import PropertyType3Serializer, PropertyType3LargeCardSerializer, PropertyType3SmallCardSerializer
 from .models import PropertyType1, PropertyType2, PropertyType3
 from rest_framework import status
+from .filters import PropertyType1Filter, PropertyType2Filter, PropertyType3Filter
 
 #TYPE 1 VIEWS
 @api_view(['POST'])
@@ -16,23 +17,25 @@ def create_type1(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['GET'])
 def getfull_type1(request):
     properties = PropertyType1.objects.filter(is_listed=True)
-    serializer = PropertyType1Serializer(properties, many=True)
+    filters = PropertyType1Filter(request.GET, queryset=properties)
+    serializer = PropertyType1Serializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def smallcard_type1(request):
     properties = PropertyType1.objects.filter(is_listed=True)
-    serializer =  PropertyType1SmallCardSerializer(properties, many=True)
+    filters = PropertyType1Filter(request.GET, queryset=properties)
+    serializer = PropertyType1SmallCardSerializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def largecard_type1(request):
     properties = PropertyType1.objects.filter(is_listed=True)
-    serializer =  PropertyType1LargeCardSerializer(properties, many=True)
+    filters = PropertyType1Filter(request.GET, queryset=properties)
+    serializer = PropertyType1LargeCardSerializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['PUT'])
@@ -58,24 +61,27 @@ def create_type2(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['GET'])
 def getfull_type2(request):
     properties = PropertyType2.objects.filter(is_listed=True)
-    serializer = PropertyType2Serializer(properties, many=True)
+    filters = PropertyType2Filter(request.GET, queryset=properties)
+    serializer = PropertyType2Serializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def smallcard_type2(request):
     properties = PropertyType2.objects.filter(is_listed=True)
-    serializer =  PropertyType2SmallCardSerializer(properties, many=True)
+    filters = PropertyType2Filter(request.GET, queryset=properties)
+    serializer = PropertyType2SmallCardSerializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def largecard_type2(request):
     properties = PropertyType2.objects.filter(is_listed=True)
-    serializer =  PropertyType2LargeCardSerializer(properties, many=True)
+    filters = PropertyType2Filter(request.GET, queryset=properties)
+    serializer = PropertyType2LargeCardSerializer(filters.qs, many=True)
     return Response(serializer.data)
+
 
 @api_view(['PUT'])
 def unlist_type2(request, property_id):
@@ -100,23 +106,25 @@ def create_type3(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
 @api_view(['GET'])
 def getfull_type3(request):
     properties = PropertyType3.objects.filter(is_listed=True)
-    serializer = PropertyType3Serializer(properties, many=True)
+    filters = PropertyType3Filter(request.GET, queryset=properties)
+    serializer = PropertyType3Serializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def smallcard_type3(request):
     properties = PropertyType3.objects.filter(is_listed=True)
-    serializer =  PropertyType3SmallCardSerializer(properties, many=True)
+    filters = PropertyType3Filter(request.GET, queryset=properties)
+    serializer = PropertyType3SmallCardSerializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def largecard_type3(request):
     properties = PropertyType3.objects.filter(is_listed=True)
-    serializer =  PropertyType3LargeCardSerializer(properties, many=True)
+    filters = PropertyType3Filter(request.GET, queryset=properties)
+    serializer = PropertyType3LargeCardSerializer(filters.qs, many=True)
     return Response(serializer.data)
 
 @api_view(['PUT'])
