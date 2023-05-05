@@ -37,8 +37,8 @@ class PropertyType1(models.Model):
         ('price_negotiable', 'Price Negotiable'),
     ]
 
-    LISTING_TYPE_CHOICES = [
-        ('rent','Rent'),
+    LISTING_TYPE_CHOICES = [ #
+        ('rent','Rent'), 
         ('sell','Sell'),
         ('pg','PG'),
     ]
@@ -57,8 +57,8 @@ class PropertyType1(models.Model):
     is_listed = models.BooleanField(default=True)
 
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
-    property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES)
-    property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
+    property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES) #
+    property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES) #
     city = models.CharField(max_length=100)
     locality = models.CharField(max_length=100)
     locality_society = models.CharField(max_length=100)
