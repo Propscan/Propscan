@@ -32,4 +32,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 	async def sendMessage(self , event) :
 		message = event["message"]
 		username = event["username"]
-		await self.send(text_data = json.dumps({"message":message ,"username":username}))
+		if(message.isdigit()):
+			print("method not allowed")
+		else:
+			await self.send(text_data = json.dumps({"message":message ,"username":username}))
