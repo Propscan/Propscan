@@ -96,7 +96,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'propscan',
-       'USER': 'postgres',
+       'USER': 'propscan_sathar',
        'PASSWORD': 'passwordpropscan',
        'HOST': 'localhost',
        'PORT': '5432',
