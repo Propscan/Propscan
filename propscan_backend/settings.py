@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'propscan_backend.middleware.TokenAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'propscan_backend.urls'
@@ -153,3 +154,11 @@ CHANNEL_LAYERS = {
 	}
 }
 LOGIN_REDIRECT_URL = "chat-page"
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
+
