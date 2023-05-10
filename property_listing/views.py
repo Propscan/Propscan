@@ -1,11 +1,25 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django.shortcuts import render
 from .serializers import PropertyType1Serializer, PropertyType1LargeCardSerializer, PropertyType1SmallCardSerializer
 from .serializers import PropertyType2Serializer, PropertyType2LargeCardSerializer, PropertyType2SmallCardSerializer
 from .serializers import PropertyType3Serializer, PropertyType3LargeCardSerializer, PropertyType3SmallCardSerializer
 from .models import PropertyType1, PropertyType2, PropertyType3
 from rest_framework import status
 from .filters import PropertyType1Filter, PropertyType2Filter, PropertyType3Filter
+
+from django.http import JsonResponse
+
+
+def location_page(request):
+    return render(request, 'location.html')
+def get_user_location(request):
+    latitude = request.GET.get('latitude')
+    longitude = request.GET.get('longitude')
+    # Process the latitude and longitude as needed
+    # ...
+    return JsonResponse({'message': 'Location received'})
+
 
 #TYPE 1 VIEWS
 @api_view(['POST'])

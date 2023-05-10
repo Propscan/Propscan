@@ -8,7 +8,7 @@ class TokenAuthenticationMiddleware:
     def __call__(self, request):
         user = AnonymousUser()
         auth_header = request.META.get('HTTP_AUTHORIZATION', '')
-        if auth_header.startswith('Bearer '):
+        if auth_header.startswith('Bearer'):
             token = auth_header.split(' ')[1]
             try:
                 user, _ = JWTAuthentication().authenticate_credentials(token)
