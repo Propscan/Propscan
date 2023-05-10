@@ -56,6 +56,12 @@ class PropertyType1(models.Model):
     user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
     is_listed = models.BooleanField(default=True)
 
+    #crm filters
+    enquiry_recieved = models.BooleanField(default=False)
+
+
+    #crm filter end
+
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES) #
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES) #
