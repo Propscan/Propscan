@@ -9,10 +9,21 @@ from rest_framework import status
 from .filters import PropertyType1Filter, PropertyType2Filter, PropertyType3Filter
 
 from django.http import JsonResponse
+import googlemaps
 
 
 def location_page(request):
-    return render(request, 'location.html')
+    gmaps = googlemaps.Client(key='AIzaSyCzkfZU5H2EfmRZdzubLoVas9t8E32uroU')
+    location = gmaps.geolocate()
+    latlng = location['location']
+    geocode_result = gmaps.reverse_geocode((latlng['lat'], latlng['lng']))
+    city = ""
+    for component in geocode_result[0]['address_components']:
+        if 'locality' in component['types']:
+            city = component['long_name']
+            break
+    return JsonResponse({'city': city})
+    return JsonResponse(location)
 def get_user_location(request):
     latitude = request.GET.get('latitude')
     longitude = request.GET.get('longitude')

@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'propscan_backend.middleware.TokenAuthenticationMiddleware',
+   'propscan_backend.middleware.TokenAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = 'propscan_backend.urls'
