@@ -16,6 +16,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.views import APIView
 from rest_framework.views import APIView
+from .models import CRMStatus
+
 
 class location_page(APIView):
     authentication_classes = [JWTAuthentication]
@@ -174,3 +176,60 @@ def unlist_type3(request, property_id):
 
     serializer = PropertyType3Serializer(property_instance)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+
+#CRM VIEWS
+
+#TYPE 1
+@api_view(['PUT'])
+def update_crm_status_type1(request, id):
+    try:
+        property_instance = PropertyType1.objects.get(pk=id)
+    except PropertyType1.DoesNotExist:
+        return Response({"detail": "Property not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    status_data = request.data.get('status')
+    crm_status, _ = CRMStatus.objects.get_or_create(property_type1=property_instance)
+    crm_status.status = status_data
+    crm_status.save()
+
+    serializer = PropertyType1Serializer(property_instance)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+#TYPE 2
+
+@api_view(['PUT'])
+def update_crm_status_type2(request, id):
+    try:
+        property_instance = PropertyType2.objects.get(pk=id)
+    except PropertyType2.DoesNotExist:
+        return Response({"detail": "Property not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    status_data = request.data.get('status')
+    crm_status, _ = CRMStatus.objects.get_or_create(property_type2=property_instance)
+    crm_status.status = status_data
+    crm_status.save()
+
+    serializer = PropertyType2Serializer(property_instance)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+#TYPE 3 
+
+@api_view(['PUT'])
+def update_crm_status_type3(request, id):
+    try:
+        property_instance = PropertyType3.objects.get(pk=id)
+    except PropertyType3.DoesNotExist:
+        return Response({"detail": "Property not found."}, status=status.HTTP_404_NOT_FOUND)
+
+    status_data = request.data.get('status')
+    crm_status, _ = CRMStatus.objects.get_or_create(property_type3=property_instance)
+    crm_status.status = status_data
+    crm_status.save()
+
+    serializer = PropertyType3Serializer(property_instance)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+

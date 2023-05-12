@@ -19,5 +19,10 @@ urlpatterns = [
     path('<int:pk>/unlist/type3', views.unlist_type3, name='unlist_type3'),
     path('api/location/', views.get_user_location, name='get_user_location'),
     path('location/',views.location_page.as_view(),name='location_page'),
+
+    #crm views
+    path('<int:id>/crmstatus/type1', views.update_crm_status_type1, name='update_crm_status_type1'),
+    path('<int:id>/crmstatus/type2', views.update_crm_status_type2, name='update_crm_status_type2'),
+    path('<int:id>/crmstatus/type3', views.update_crm_status_type3, name='update_crm_status_type3'),
 ]
 

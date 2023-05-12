@@ -56,12 +56,9 @@ class PropertyType1(models.Model):
     user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
     is_listed = models.BooleanField(default=True)
 
-    #crm filters
-    enquiry_recieved = models.BooleanField(default=False)
-
-
-    #crm filter end
-
+    #crm
+    status = models.ForeignKey('CRMStatus', on_delete=models.CASCADE, null=True, blank=True)
+    #crm 
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES) #
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES) #
@@ -157,6 +154,9 @@ class PropertyType2(models.Model):
     user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
     is_listed = models.BooleanField(default=True)
 
+    #crm
+    status = models.ForeignKey('CRMStatus', on_delete=models.CASCADE, null=True, blank=True)
+    #crm 
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
     property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES)
@@ -246,6 +246,9 @@ class PropertyType3(models.Model):
     user = models.ForeignKey(PropScanUser, on_delete=models.CASCADE)
     is_listed = models.BooleanField(default=True)
 
+    #crm
+    status = models.ForeignKey('CRMStatus', on_delete=models.CASCADE, null=True, blank=True)
+    #crm 
     listing_type = models.CharField(max_length=20, choices=LISTING_TYPE_CHOICES)
     property_type = models.CharField(max_length=20, choices=PROPERTY_TYPE_CHOICES)
     property_sub_type = models.CharField(max_length=20, choices=PROPERTY_SUB_TYPE_CHOICES)
@@ -300,3 +303,23 @@ class PropertyType3(models.Model):
     def __str__(self):
         return f"{self.property_type} in {self.locality_society} - {self.expected_price}"
     
+
+
+class CRMStatus(models.Model):
+    property_type1 = models.ForeignKey(PropertyType1, on_delete=models.CASCADE, null=True, blank=True)
+    property_type2 = models.ForeignKey(PropertyType2, on_delete=models.CASCADE, null=True, blank=True)
+    property_type3 = models.ForeignKey(PropertyType3, on_delete=models.CASCADE, null=True, blank=True)
+    status = models.CharField(max_length=100, choices=[
+        ('Listed', 'Listed'),
+        ('Enquiry received', 'Enquiry received'),
+        ('Qualified', 'Qualified'),
+        ('Call scheduled', 'Call scheduled'),
+        ('On-site meeting scheduled', 'On-site meeting scheduled'),
+        ('Quotation sent', 'Quotation sent'),
+        ('Negotiation', 'Negotiation'),
+        ('Sold', 'Sold'),
+    ])
+
+    def __str__(self):
+        return f"Listing {self.pk} - {self.status}"
+
