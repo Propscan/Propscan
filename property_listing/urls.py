@@ -18,6 +18,6 @@ urlpatterns = [
     path('<int:pk>/unlist/type2', views.unlist_type2, name='unlist_type2'),
     path('<int:pk>/unlist/type3', views.unlist_type3, name='unlist_type3'),
     path('api/location/', views.get_user_location, name='get_user_location'),
-    path('location/',views.location_page,name='location_page'),
+    path('location/',views.location_page.as_view(),name='location_page'),
 ]
 

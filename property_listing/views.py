@@ -11,19 +11,29 @@ from .filters import PropertyType1Filter, PropertyType2Filter, PropertyType3Filt
 from django.http import JsonResponse
 import googlemaps
 
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.views import APIView
+from rest_framework.views import APIView
 
-def location_page(request):
-    gmaps = googlemaps.Client(key='AIzaSyCzkfZU5H2EfmRZdzubLoVas9t8E32uroU')
-    location = gmaps.geolocate()
-    latlng = location['location']
-    geocode_result = gmaps.reverse_geocode((latlng['lat'], latlng['lng']))
-    city = ""
-    for component in geocode_result[0]['address_components']:
-        if 'locality' in component['types']:
-            city = component['long_name']
-            break
-    return JsonResponse({'city': city})
-    return JsonResponse(location)
+class location_page(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    
+    
+    def get(self,request):
+        gmaps = googlemaps.Client(key='AIzaSyCzkfZU5H2EfmRZdzubLoVas9t8E32uroU')
+        location = gmaps.geolocate()
+        latlng = location['location']
+        geocode_result = gmaps.reverse_geocode((latlng['lat'], latlng['lng']))
+        city = ""
+        for component in geocode_result[0]['address_components']:
+            if 'locality' in component['types']:
+                city = component['long_name']
+                break
+        return JsonResponse({'city': city})
+    
 def get_user_location(request):
     latitude = request.GET.get('latitude')
     longitude = request.GET.get('longitude')

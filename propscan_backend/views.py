@@ -7,12 +7,41 @@ import requests
 from .settings import api_key
 from rest_framework.views import APIView
 
-from rest_framework.authentication import TokenAuthentication
+# from rest_framework.authentication import TokenAuthentication
+# from rest_framework.permissions import IsAuthenticated
+# from rest_framework.decorators import api_view, authentication_classes, permission_classes
+
+
+
+from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import AccessToken
+from rest_framework_simplejwt.exceptions import InvalidToken
+from rest_framework_simplejwt.tokens import AccessToken
+from rest_framework_simplejwt.exceptions import InvalidToken
+from django.http import JsonResponse
 
+def generate_jwt_token(user):
+    token = AccessToken.for_user(user)
+    jwt_token = str(token)
+    return jwt_token
 
-
+def verify_jwt_token(request):
+    token = request.META.get('HTTP_AUTHORIZATION', '').split(' ')[1]
+    try:
+        access_token = AccessToken(token)
+        user = access_token.payload.get('user_id')
+        # Perform necessary actions with the verified user
+        return JsonResponse({'user_id': user})
+    except InvalidToken:
+        return JsonResponse({'error': 'Invalid token'}, status=401)
+    
+    
+class MyAPIView(APIView):
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [IsAuthenticated]
+    # Your API implementation
 
 
 
