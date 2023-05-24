@@ -10,66 +10,58 @@ export default function Gallery() {
         <Row>
             <Col xs="1" />
             <Col xs="10">
-
-        <div className='px-2'>
-            <p className='top text-center text-md-start'>Aapki <span className='f-bold'>Gallery</span></p>
-            <div>
-                <span style={{
-                    fontFamily: "Poppins",
-                    fontStyle: "normal",
-                    fontWeight: "400",
-                    fontSize: "16px",
-                    lineHeight: "22px",
-                    color: "#4F4F4F",
-                }}>Have a look on the Top localities
-                </span>
-                <button className='btn-info' style={{ float: "right" }}><span className='btn-text'>View More</span></button>
-            </div>
-            <div className='my-5'>
-                <Row className='m-0 p-0'>
-                    <Col className='p-0'>
-                    <div className='d-flex' style={{overflow: "scroll", justifyContent:"space-between"}}>
-                        <div className='p-0'>
-                            <img
-                                src="images/img_rectangle41.png"
-                                width="246px"
-                                height="246px"
-                            />
-                            <br />
-                            <span className='city'>Dwarka</span>
-                        </div>
-                        <div className='p-0'>
-                            <img
-                                src="images/img_rectangle42.png"
-                                width="246px"
-                                height="246px"
-                            />
-                            <br />
-                            <span className='city'>Saket</span>
-                        </div>
-                        <div className='p-0'>
-                            <img
-                                src="images/img_rectangle43.png"
-                                width="246px"
-                                height="246px"
-                            />
-                            <br />
-                            <span className='city'>Janakpuri</span>
-                        </div>
-                        <div className='p-0'>
-                            <img
-                                src="images/img_rectangle44.png"
-                                width="246px"
-                                height="246px"
-                            />
-                            <br />
-                            <span className='city'>Uttam Nagar</span>
-                        </div>
+                <div className='px-2'>
+                    <p className='top text-md-start'>Aapki <span className='f-bold'>Gallery</span></p>
+                    <div>
+                        <span className='gallery-subtext'>Have a look on the Top localities
+                        </span>
+                        <button className='btn-info d-none d-md-block d-lg-block d-xl-block' style={{ float: "right" }}><span className='btn-text'>View More</span></button>
                     </div>
-                    </Col>
-                </Row>
-            </div>
-        </div>
+                    <div className='my-5'>
+                        <Row className='m-0 p-0'>
+                            <Col className='p-0'>
+                            <div className='d-flex' style={{overflowX: "scroll", justifyContent:"space-between", gap:"24px"}}>
+                                <div className='p-0'>
+                                    <img
+                                        src="images/gallery_1.png"
+                                        width="246px"
+                                        height="246px"
+                                    />
+                                    <br />
+                                    <span className='gallery-city'>Dwarka</span>
+                                </div>
+                                <div className='p-0'>
+                                    <img
+                                        src="images/gallery_2.png"
+                                        width="246px"
+                                        height="246px"
+                                    />
+                                    <br />
+                                    <span className='gallery-city'>Saket</span>
+                                </div>
+                                <div className='p-0'>
+                                    <img
+                                        src="images/gallery_3.png"
+                                        width="246px"
+                                        height="246px"
+                                    />
+                                    <br />
+                                    <span className='gallery-city'>Janakpuri</span>
+                                </div>
+                                <div className='p-0'>
+                                    <img
+                                        src="images/gallery_4.png"
+                                        width="246px"
+                                        height="246px"
+                                    />
+                                    <br />
+                                    <span className='gallery-city'>Uttam Nagar</span>
+                                </div>
+                            </div>
+                            </Col>
+                        </Row>
+                    </div>
+                </div>
             </Col>
             <Col xs="1" />
         </Row>

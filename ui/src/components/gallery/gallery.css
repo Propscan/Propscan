@@ -1,8 +1,14 @@
-.btn{
-    border: none;
+
+.gallery-subtext{
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: #4F4F4F;
 }
 
-.city{
+.gallery-city{
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;

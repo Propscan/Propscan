@@ -1,3 +1,7 @@
+.row{
+  margin:0px;
+}
+
 .top {
   font-family: 'Poppins';
   font-style: normal;
@@ -7,7 +11,7 @@
   color: #0D2855;
 }
 
-.f-bold{
+.f-bold {
   font-weight: 700;
 }
 
@@ -34,6 +38,20 @@
   border: none;
   padding: 8px 24px;
   font-weight: 700;
+  font-family: 'Poppins';
+}
+
+.btn-white {
+  font-style: normal;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 30px;
+  color: #0D2855;
+  border: none;
+  padding: 8px 24px;
+  font-weight: 500;
   font-family: 'Poppins';
 }
 
