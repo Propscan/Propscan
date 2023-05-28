@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -6,6 +7,7 @@ import Col from 'react-bootstrap/Col';
 import "./searchbar.css"
 
 export default function Searchbar() {
+  const navigate = useNavigate();
   return (
     <div className='searchbar-setter'>
       <Row>
@@ -19,7 +21,7 @@ export default function Searchbar() {
               <Col xs="9" style={{borderLeft: "1px solid #0D2855"}} className='my-auto'>
                 <div style={{position:"relative"}}>
                   <input className='searchbar-input' placeholder='Search for loacality, Landmark, Project or Builder' />
-                  <button className='btn-info float-end'><span className='expert-btn-text px-3'>Search</span></button>
+                  <button className='btn-info float-end' onClick={() => navigate("/properties")}><span className='expert-btn-text px-3'>Search</span></button>
                   <div className='searchbar-text p-3'>
                     <br/>
                     <br/>
