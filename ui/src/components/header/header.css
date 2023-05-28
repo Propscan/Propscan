@@ -45,3 +45,10 @@
     text-align: center;
     color: #FFFFFF;
 }
+
+.logged-in-header{
+    background-color: #092C4C;
+    height: 10vh;
+    display: flex;
+    align-items: center
+}

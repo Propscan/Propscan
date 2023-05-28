@@ -24,7 +24,7 @@ export default function Expert({ src, name, convRate }) {
                         <div style={{ position: "absolute", bottom: "25%", right: "2%" }}>
                             <button className='like float-end' style={{
                                 boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25))"
-                            }}><img src="images/img_download.svg" /></button>
+                            }}><img src="images/heart.svg" /></button>
                         </div>
                     </div>
                 </div>

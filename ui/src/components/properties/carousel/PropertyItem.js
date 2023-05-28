@@ -14,7 +14,7 @@ export default function PropertyItem({ src, text, subText1, subText2, price }) {
           <span className='sell'>For Sell</span>
         </div>
         <div style={{position:"absolute", bottom:"4%", right:"2%"}}>
-          <button className='like'><img src="images/img_download.svg" /></button>
+          <button className='like'><img src="images/heart.svg" /></button>
         </div>
 
       </div>
