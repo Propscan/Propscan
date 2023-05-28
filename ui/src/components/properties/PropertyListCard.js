@@ -12,13 +12,13 @@ export default function PropertyListCard(props) {
             <img src={props.propertyImage} alt="property" height={"auto"} width={"20%"}/>
             <div className='property-list-card'>
                 <div class="row">
-                    <div class="col-7 property-name">
+                    <div class="col-8 property-name">
                         {props.name}
                     </div>
                     <div class="col">
                         <div className="property-batch">RERA </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-2">
                         <div style={{display:"flex", justifyContent:"flex-end"}}>
                             <div className="info-icon">
                                 <img src="images/HeartStraight.png" alt="" />
