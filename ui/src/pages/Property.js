@@ -9,7 +9,6 @@ import Footer from '../components/footer/Footer';
 export default function Property() {
     return (
         <div>
-            Some Header Probably
             <PropertyInfo />
             <PropertyExtras />
             <Blank />

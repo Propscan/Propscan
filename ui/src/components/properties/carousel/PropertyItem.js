@@ -7,7 +7,7 @@ export default function PropertyItem({ src, text, subText1, subText2, price }) {
     <div className='p-item'>
       <div style={{position:"relative"}}>
         <img src={src} style={{
-          maxWidth: "100%",
+          width: "100%",
           height: "auto"
         }} />
         <div style={{position:"absolute", top:"8%", left:"0%"}}>

@@ -58,4 +58,4 @@ const Slider = React.forwardRef(
         );
     }
 );
-export { Slider };
+export default Slider;
