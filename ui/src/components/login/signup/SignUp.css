@@ -10,10 +10,11 @@
 }
 
 
-.form {
+.login-form {
     /* position: absolute; */
     width: 280px;
-    height: 440px;
+    padding: 10px 0px;
+    /* height: 440px; */
     /* left: 500px; */
     /* top: 196px; */
 
@@ -24,8 +25,8 @@
 }
 
 
-.paragraph {
-    width: 15vw;
+.info-paragraph {
+    width: 50%;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 600;
@@ -43,26 +44,14 @@
 }
 
 
-.p2 {
-    /* position: absolute; */
-    width: 86.92px;
-    height: 20px;
-    /* left: 34%;
-    top: 62%; */
-    margin: auto;
-    margin-top: 7vw;
-
+.continue-text {
+    margin-top: 42px;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     line-height: 20px;
-    /* identical to box height, or 167% */
-
     text-align: center;
-
-    /* Color - Primary */
-
     color: #092C4C;
 }
 
@@ -96,22 +85,12 @@
 }
 
 
-.btn2 {
-    position: absolute;
-    left: 40%;
-    right: 37.66%;
-    top: 15.48%;
-    bottom: 72.72%;
-
+.back-btn2 {
     font-family: 'Segoe UI';
     font-style: normal;
     font-weight: 400;
     font-size: 10px;
-    line-height: 22px;
-    /* identical to box height, or 224% */
-
-
-    /* Color - Grey 2 */
-
     color: #4F4F4F;
+    padding:0;
+    margin:0
 }

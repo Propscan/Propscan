@@ -1,217 +1,227 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./owner.css";
 import axios from "axios";
 import { propscan_base_url } from "../../utils/Route";
-import Alert from "@mui/material/Alert";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import CloseIcon from "@mui/icons-material/Close";
+import LoginFooter from "../LoginFooter";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert';
+import IconButton from '@mui/material/IconButton';
+import Collapse from '@mui/material/Collapse';
 
-const theme = createTheme({
-  components: {
-    // Name of the component
-    MuiAlert: {
-      defaultProps: {
-        // The default props to change
-        components: {
-          CloseIcon: CloseIcon,
-        },
-      },
-    },
-  },
-});
-
-export default function Owner1() {
+function Owner1(props) {
   const [full_name, setFull_Name] = useState("");
   const [phone_no, setPhone_No] = useState("");
   const [email, setEmail] = useState("");
-  const [success, setSuccess] = useState(false);
-  const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState();
+  const [openAlert, setOpenAlert] = useState(false);
+  const [sevAlert, setSevAlert] = useState("");
+  const [msgAlert, setMsgAlert] = useState("");
 
-  const handleChange = () => {
-    setError(false);
-    setSuccess(false);
+  const handleChange = (e) => {
+    setOpenAlert(false)
+    e.preventDefault();
+
+    // Check validities
+    var emailEle = document.getElementById("email");
+    var fullnameEle = document.getElementById("fullname");
+    var phonenoEle = document.getElementById("phoneno");
+
+    fullnameEle.checkValidity();
+    fullnameEle.reportValidity();
+    emailEle.checkValidity();
+    emailEle.reportValidity();
+    phonenoEle.checkValidity();
+    phonenoEle.reportValidity();
+
+    if(!(full_name && phone_no && email))
+      return
+
     axios
       .post(`${propscan_base_url}/accounts/register`, {
         user: {
-          full_name: full_name,
-          phone_no: phone_no,
-          email: email,
-          user_type: "OWNER",
+          "full_name": full_name,
+          "phone_no": phone_no,
+          "email": email,
+          "user_type": "OWNER",
         },
-        additional_phone_no: phone_no,
+        "additional_phone_no": phone_no
       })
       .then((res) => {
-        console.log(res);
-        console.log(res.status);
-        if (res.status) setSuccess(res.status === 200 || res.status === 201);
-        else {
-          console.log(res);
-          setError(true);
-          setErrorMessage(res.response.data.error);
-          // console.log(res);
-        }
+        setSevAlert("success")
+        setMsgAlert("Signup is successful. Please login to proceed!")
+        setOpenAlert(true)
       })
       .catch((err) => {
-        console.log(err);
-        setError(true);
-        setErrorMessage(err.response.data.error);
+        setSevAlert("error")
+        setMsgAlert(err.response.data.error)
+        setOpenAlert(true)
       });
   };
 
-  return (
-    <div className="container">
-      <div>
-        <p className="paragraph1">Personal Information</p>
-      </div>
-      <div style={{ marginTop: "-1.5vh" }}>
-        <div>
-          <div>
-            <div
-              className="input-group mb-3"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <span
-                className="input-group-text icon_style"
-                style={{
-                  backgroundColor: "white",
-                  border: " 1px solid #0D2855",
-                  borderRadius: "30px 0px 0px 30px",
-                  padding: "0.7vh",
-                  marginTop: "0.1vh",
-                }}
-              >
-                <img src="images/name_icon.png" alt="Not found!" />
-              </span>
-              <input
-                value={full_name}
-                onChange={(e) => setFull_Name(e.target.value)}
-                type="text"
-                className="form-control"
-                placeholder="Full Name"
-                aria-label="Full Name"
-                style={{ marginTop: "1vh" }}
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <div
-              className="input-group mb-3"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <span
-                className="input-group-text icon_style"
-                style={{
-                  backgroundColor: "white",
-                  border: "1px solid #0D2855",
-                  borderRadius: "30px 0px 0px 30px",
-                  padding: "0.8vh",
-                  marginTop: "-2vh",
-                }}
-              >
-                <img src="images/smartphone_icon.png" alt="Not found!" />
-              </span>
-              <input
-                type="tel"
-                value={phone_no}
-                onChange={(e) => setPhone_No(e.target.value)}
-                className="form-control"
-                placeholder="+91 Mobile Number"
-                aria-label="phone"
-                style={{ marginTop: "-1vh", borderRadius: "0px 30px 30px 0px" }}
-              />
-            </div>
-          </div>
-        </div>
-        <div>
-          <div>
-            <div
-              className="input-group mb-3"
-              style={{ display: "flex", alignItems: "center" }}
-            >
-              <span
-                className="input-group-text icon_style"
-                style={{
-                  backgroundColor: "white",
-                  border: "1px solid #0D2855",
-                  borderRadius: "30px 0px 0px 30px",
-                  padding: "1.2vh",
-                  marginTop: "-2vh",
-                }}
-              >
-                <img src="images/email_icon.png" alt="Not found!" />
-              </span>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                className="form-control"
-                placeholder="Email Id"
-                aria-label="email"
-                style={{ marginTop: "-1vh" }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className="form-check "
-        style={{ marginLeft: "4vh", marginTop: "-1.5vh" }}
-      >
-        <input
-          className="form-check-input checkout"
-          type="checkbox"
-          value=""
-          id="flexCheckDefault"
-        />
-      </div>
-      <div style={{ marginTop: "-4.5vh", marginLeft: "6.5vh" }}>
-        <label className="lable">Are you Broker?</label>
-      </div>
-      <div
-        style={{ textAlign: "center", marginBottom: "0.6vh", marginTop: "2vh" }}
-      >
-        {success && (
-          <ThemeProvider theme={theme}>
-            <Alert
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 999,
-              }}
-              severity="success"
-              onClose={() => setSuccess(false)}
-            >
-              Register Successful. Please login to continue!
-            </Alert>
-          </ThemeProvider>
-        )}
-        {error && (
-          <ThemeProvider theme={theme}>
-            <Alert
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                zIndex: 999,
-              }}
-              severity="error"
-              onClose={() => setError(false)}
-            >
-              {errorMessage}
-            </Alert>
-          </ThemeProvider>
-        )}
+  useEffect(() => {
+    function handleResizeImage() {
+      const loginForm = document.querySelector('.login-form');
+      const customerImage = document.querySelector('.customer-image');
+      if(window.getComputedStyle(loginForm) && window.getComputedStyle(loginForm).height && customerImage){
+        const loginFormHeight = window.getComputedStyle(loginForm).height;
+        customerImage.style.height = loginFormHeight
+      }
+    }
 
-        <button className="btn1" type="submit" onClick={handleChange}>
-          CONFIRM
-        </button>
+    window.addEventListener('resize', handleResizeImage)
+    handleResizeImage()
+  })
+
+  return (
+    <div class="row login">
+      <div style={{padding:0, display:"flex", alignItems:"center",justifyContent:"center"}}>
+        <div className="d-none d-md-block customer-image">
+          <img src="images/Group 42.png" alt="Not found!" style={{height:"100%"}}/>
+        </div>
+        <div class="login-form">
+              <div style={{width:"100%", textAlign:"left", marginLeft:"21px", padding:0}}>
+                <button
+                  type="click"
+                  class="btn back-btn2"
+                  onClick={() => props.handleBack()}
+                >
+                  <NavigateBeforeIcon
+                    style={{ padding: 0, margin:0, fontSize:"18px" }}
+                  />
+                  Back
+                </button>
+              </div>
+          <div style={{ textAlign: "center" }}>
+            <img src="images/loginPropscan.png" alt="Not found!" />
+          </div>
+        <div>
+          <p className="paragraph1">Personal Information</p>
+        </div>
+        <div style={{padding:"0px 10px"}}> 
+          <form onsubmit="return false">
+          <div>
+            <div>
+              <div
+                class="input-group"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <span
+                  class="input-group-text icon_style"
+                  style={{
+                    backgroundColor: "white",
+                    border: " 1px solid #0D2855",
+                    borderRadius: "30px 0px 0px 30px",
+                    padding: "5px",
+                  }}
+                >
+                  <img src="images/name_icon.png" alt="Not found!" />
+                </span>
+                <input
+                  type="text"
+                  value={full_name}
+                  onChange={(e) => setFull_Name(e.target.value)}
+                  className="signup-input form-control"
+                  placeholder="Full Name"
+                  aria-label="Full Name"
+                  id="fullname"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div
+                class="input-group"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <span
+                  class="input-group-text icon_style"
+                  style={{
+                    backgroundColor: "white",
+                    border: "1px solid #0D2855",
+                    borderRadius: "30px 0px 0px 30px",
+                    padding: "5.5px"
+                  }}
+                >
+                  <img src="images/smartphone_icon.png" alt="Not found!" />
+                </span>
+                <input
+                  type="tel"
+                  value={phone_no}
+                  onChange={(e) => setPhone_No(e.target.value)}
+                  class="signup-input form-control"
+                  placeholder="+91  Mobile Number"
+                  aria-label="phone"
+                  id="phoneno"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div>
+              <div
+                class="input-group"
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <span
+                  class="input-group-text icon_style"
+                  style={{
+                    backgroundColor: "white",
+                    border: "1px solid #0D2855",
+                    borderRadius: "30px 0px 0px 30px",
+                    padding: "8.5px",
+                  }}
+                >
+                  <img src="images/email_icon.png" alt="Not found!" />
+                </span>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  class="signup-input form-control"
+                  placeholder="Email Id"
+                  aria-label="email"
+                  required
+                  id="email"
+                  />
+              </div>
+            </div>
+          </div>
+          <div style={{ textAlign: "center", marginBottom: "0.6vh" }}>
+          <button className="btn1" type="submit" onClick={handleChange}>
+            CONFIRM
+          </button>
+        </div>
+          </form>
+        </div>
+        <LoginFooter />  
+        </div>
       </div>
+      <Collapse in={openAlert} style={{width:"auto", position:"absolute", bottom:21}}>
+        <Alert
+          action={
+            <IconButton
+              aria-label="close"
+              color="inherit"
+              size="small"
+              onClick={() => {
+                setOpenAlert(false);
+              }}
+            >
+              <CloseIcon style={{fontSize:"14px"}} />
+            </IconButton>
+          }
+          style={{width:"auto", fontSize:"12px"}}
+          severity={sevAlert}
+          // sx={{ mb: 2 }}
+        >
+          {msgAlert}
+        </Alert>
+      </Collapse>
     </div>
   );
 }
+
+export default Owner1;

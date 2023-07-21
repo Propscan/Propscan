@@ -24,6 +24,15 @@ input[type="email"] {
 
 }
 
+.signup-input:hover{
+    border: 1px solid #0D2855 !important;
+    box-shadow: none;
+}
+
+.signup-input:focus{
+    border: 1px solid #0D2855 !important;
+    box-shadow: none;
+}
 
 .checkout {
     box-sizing: border-box;
@@ -53,4 +62,8 @@ input[type="email"] {
     /* Color - Grey 2 */
 
     color: #4F4F4F;
+}
+
+.MuiAlert-icon{
+    font-size: 17px !important;
 }
