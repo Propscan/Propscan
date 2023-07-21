@@ -1,0 +1,43 @@
+.heading1 {
+
+    box-sizing: border-box;
+    top: 86.9%;
+    bottom: 3.49%;
+    
+
+    width: 105px;
+    height: 16px;
+    left: 126px;
+    top: 739px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    /* identical to box height, or 114% */
+
+    margin: 1vh;
+    margin-top: 10vh;
+    color: #0D2855;
+    margin-left: 1vh;
+
+}
+
+.para1 {
+
+    width: 106px;
+    height: 24px;
+    left: 126px;
+    top: 763px;
+    margin-Top: -2vh;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 8px;
+    line-height: 12px;
+    /* or 150% */
+
+
+    color: #0D2855;
+}

@@ -10,7 +10,7 @@ import Gallery from '../components/gallery/gallery';
 import Clients from '../components/clients/clients';
 import Experts from '../components/experts/experts';
 
-import Footer from '../components/footer/Footer';
+
 
 export default function Home() {
   return (
@@ -31,7 +31,6 @@ export default function Home() {
         <Gallery />
         <Clients />
         <Blank />
-        <Footer />
     </div>
   )
 }

@@ -1,0 +1,146 @@
+.stat {
+    background: E8F9FD;
+    /* background: lightcyan; */
+    border-radius: 16px;
+}
+
+.stat-container {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.stat-img {
+    padding: 20px 12px;
+}
+
+.stat-text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 16px;
+    text-align: center;
+    color: #092C4C;
+}
+
+.subtext {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #092C4C;
+}
+
+.p-item {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px #bab9b9;
+    /* filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.35)); */
+    background-color: #FFFFFF;
+    padding-bottom: 30px;
+    margin-top: 12px;
+}
+
+.text {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    color: #092C4C;
+}
+
+.text2 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #4F4F4F;
+}
+
+.price {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    /* text-align: right; */
+    color: #FFFFFF;
+    background: #27AE60;
+    border-radius: 5px 0px 0px 5px;
+    float: right;
+    padding-right: 8px;
+    padding-left: 8px;
+    margin-bottom: 20px;
+}
+
+.sell {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    background: #EB5757;
+    border-radius: 5px 0px 0px 5px;
+    border-radius: 0px 5px 5px 0px;
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+
+.like {
+    background: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    position: relative;
+    top: 0%;
+    right: 0%;
+}
+
+/* -----------
+.carousel-wrapper {
+    position: relative;
+}
+
+.carousel-slide {
+    text-align: center;
+    height: 200px;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-pager {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.carousel-pager li {
+    width: 12px;
+    height: 12px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.carousel-pager li:last-child {
+    margin-right: 0;
+}
+
+.carousel-pager li.active {
+    background-color: #333;
+} */

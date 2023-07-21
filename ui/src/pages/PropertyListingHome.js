@@ -7,7 +7,7 @@ import PropertyListing from '../components/properties/PropertyListing'
 export default function PropertyListingHome() {
   return (
     <div>
-        <LoggedInHeader />
+        <LoggedInHeader showSearchBar={true}/>
         <PropertyListingFilters />
         <PropertyListing />
     </div>

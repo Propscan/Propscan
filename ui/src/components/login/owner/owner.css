@@ -1,0 +1,73 @@
+.paragraph1 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    text-decoration-line: underline;
+    margin: 2.5vh;
+    color: #092C4C;
+
+}
+
+
+input[type="text"] {
+    box-sizing: border-box;
+    border: 1px solid #0D2855;
+    border-radius: 30px;
+    margin: 1vh;
+    font-size: 14px;
+
+}
+
+input[type="tel"] {
+    box-sizing: border-box;
+    border: 1px solid #0D2855;
+    border-radius: 30px;
+    margin: 1vh;
+    font-size: 14px;
+
+}
+
+input[type="email"] {
+    box-sizing: border-box;
+    border: 1px solid #0D2855;
+    border-radius: 30px;
+    margin: 1vh;
+    font-size: 14px;
+
+}
+
+
+.checkout {
+    box-sizing: border-box;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #0D2855;
+    border-radius: 4px;
+    margin: 4%;
+}
+
+
+.lable {
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 22px;
+    
+    color: #4F4F4F;
+}
+
+
+
+
+
+icon_style {
+
+
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+

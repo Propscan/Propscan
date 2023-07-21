@@ -49,7 +49,7 @@ const SelectBox = React.forwardRef(
             (size && sizes[size]) || ""
           } ${(variant && variants[variant]) || ""}`}
           placeholder={
-            <div className={placeholderClassName} style={{color:"#0D2855", textAlign:"center"}}>{placeholder}</div>
+            <div className={placeholderClassName} style={{color:"#0D2855", textAlign:"center", fontSize: "min(max(8.5px, 3vw), 14px)"}}>{placeholder}</div>
           }
           isSearchable={isSearchable}
           isMulti={isMulti}
@@ -82,11 +82,13 @@ const SelectBox = React.forwardRef(
               ...provided,
               color: state.isSelected && "#fafafa",
               backgroundColor: state.isSelected && "#092c4c",
+              fontSize: "min(max(8.5px, 3vw), 14px)",
               "&:hover": { backgroundColor: "#092c4c", color: "#ffffff" },
             }),
             singleValue: (provided) => ({
               ...provided,
               color: "inherit",
+              fontSize: "min(max(8.5px, 3vw), 14px)"
             }),
             input: (provided) => ({
               ...provided,
@@ -98,6 +100,7 @@ const SelectBox = React.forwardRef(
             valueContainer: (provided) => ({
               ...provided,
               padding: "0",
+              fontSize: "min(max(8.5px, 3vw), 14px)"
             }),
             dropdownIndicator: (provided) => ({
               ...provided,

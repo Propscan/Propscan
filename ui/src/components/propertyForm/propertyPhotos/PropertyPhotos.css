@@ -1,0 +1,49 @@
+.para_text {
+    width: 55%;
+    height: 5%;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 16px;
+    color: #0D2855;
+    margin: 5vh;
+}
+
+.para_text1 {
+    width: 55%;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    color: #0D2855;
+    margin: 5vh;
+}
+
+.para_text2 {
+
+    width: 213px;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 16px;
+    margin: 5vh;
+    margin-top: 10vh;
+    color: #0D2855;
+}
+
+/* box-sizing: border-box;
+
+position: absolute;
+left: 0%;
+right: 0%;
+top: 0%;
+bottom: 0%;
+
+background: #F5F5F5;
+border: 1px dashed #BDBDBD;
+border-radius: 2px; */

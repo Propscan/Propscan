@@ -1,0 +1,117 @@
+.para2 {
+
+    width: 176px;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 16px;
+    margin: 5vh;
+    color: #0D2855;
+}
+
+.para3 {
+
+    width: 116px;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    margin: 5vh;
+    color: #0D2855;
+}
+
+
+
+.icon {
+    width: 87px;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 5vh;
+    margin-top: 2vh;
+    color: #22992E;
+}
+
+
+
+
+.para4 {
+    width: 168px;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 16px;
+    color: #0D2855;
+    margin: 5vh;
+}
+
+.para5 {
+
+    width: 300px;
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 4vh;
+    margin-top: -2vh;
+    color: #0D2855;
+}
+
+.icon1 {
+    height: 16px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 1vh;
+    color: #22992E;
+
+
+}
+
+.para6 {
+    width: 260px;
+    height: 16px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 16px;
+
+    /* identical to box height, or 80% */
+    margin: 4vh;
+    margin-top: 10vh;
+    color: #0D2855;
+}
+
+.para7 {
+
+    width: 280px;
+    height: 16px;
+    margin-top: -2.5vh;
+    margin-left: 3.5vh;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16px;
+
+    /* identical to box height, or 114% */
+
+    color: #0D2855;
+
+
+}

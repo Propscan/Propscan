@@ -1,0 +1,129 @@
+.a_style {
+
+    font-family: 'Helvetica Neue';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 24px;
+    color: #0D2855;
+    border-radius:8px;
+    padding:8px
+}
+
+
+.heading {
+    width: 678px;
+    height: 16px;
+
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 16px;
+
+
+    margin: 5vh;
+    color: #0D2855;
+
+}
+
+.p {
+
+    width: 163px;
+    height: 16px;
+
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 16px;
+    text-decoration: none;
+
+    margin: 12vh;
+    margin-left: 6vh;
+
+    color: #0D2855;
+    margin-top: 5.5vh;
+}
+
+
+.chip {
+    margin: 5vh;
+    margin-top: -9vh;
+
+}
+
+.chip1 {
+    margin: 5vh;
+    margin-top: -3vh;
+}
+
+.chip2 {
+    margin: 5vh;
+    margin-top: -3vh;
+
+}
+
+.p1 {
+
+    width: 431px;
+    height: 16px;
+
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 16px;
+    margin: 12vh;
+    margin-left: 5vh;
+    margin-top: 7.5vh;
+    text-decoration: none;
+
+    color: #0D2855;
+}
+
+
+.button {
+
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 5vh;
+    padding: 1.5vh;
+    text-align: center;
+    border-radius: 30px;
+    color: #FFFFFF;
+    background-color: #092C4C;
+}
+
+.radio {
+    display: flex;
+    margin: 14vh;
+    margin-left: -5vh;
+    margin-top: -8vh;
+
+
+}
+
+.form-check {
+
+    width: 88px;
+    height: 16px;
+
+    margin-left: 10vh;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+
+
+    color: #0D2855;
+}

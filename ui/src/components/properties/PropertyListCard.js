@@ -21,10 +21,10 @@ export default function PropertyListCard(props) {
                     <div class="col-2">
                         <div style={{display:"flex", justifyContent:"flex-end"}}>
                             <div className="info-icon">
-                                <img src="images/HeartStraight.png" alt="" />
+                                <img src="/images/HeartStraight.png" alt="" />
                             </div>
                             <div className="info-icon" style={{marginLeft:"5%"}}>
-                                <img src="images/LikeIcon.png" alt="" />
+                                <img src="/images/LikeIcon.png" alt="" />
                             </div>
                         </div>
                     </div>

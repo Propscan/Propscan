@@ -26,7 +26,7 @@ export default function Stats() {
       <Col xs="6" md>
         <StatItem
           src="images/img_fisrmoney.svg"
-          text="100 Cr+"
+          text="100 Cr +"
           subText="Of real Estate experience"
         />
       </Col>

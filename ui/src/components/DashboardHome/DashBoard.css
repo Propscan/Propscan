@@ -1,0 +1,93 @@
+.btn3 {
+    background: #092C4C;
+    border-radius: 40px;
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 16px;
+    /* height: 4vh; */
+    /* identical to box height, or 100% */
+    text-align: center;
+    padding: 1vh;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.revenue {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 2vh;
+    color: #0D2855;
+
+
+}
+
+.Rs {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 16px;
+    margin: 2vh;
+    margin-top: 3vh;
+    color: #0D2855;
+}
+
+.number {
+
+    align-items: center;
+    padding: 0px 8px;
+    margin: 2vh;
+    margin-top: -3vh;
+    width: 75px;
+    height: 24px;
+    color: white;
+
+    background: #22992E;
+    border-radius: 14px;
+}
+
+.LastWeek {
+    margin-top: -3vh;
+}
+
+.Units {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 16px;
+    margin-left: 10vh;
+    margin-top: 6vh;
+    color: #0D2855;
+    /* margin-left: 40vh; */
+}
+
+.MyUnits {
+    color: #0D2855;
+    text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    font-family: Poppins;
+    font-weight: 600;
+    line-height: 16px;
+}
+
+
+.nav-item {
+    color: red;
+}
+
+.button1 {
+    color: #0D2855;
+    font-size: 14px;
+    font-family: Poppins;
+    font-weight: 500;
+    line-height: 24px;
+    border-radius: 30px;
+    background-color: white;
+    padding: 1vh;
+}

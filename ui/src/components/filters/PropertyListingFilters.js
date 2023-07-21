@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col';
 // import { Img, List, SelectBox, Text } from "components";
 
 import "./filters.css"
+import "../propertyInfo/propertyInfo.css"
 import { SelectBox } from '../selectbox';
 
 const propertyTypeOptionsList = [

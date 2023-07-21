@@ -20,7 +20,7 @@ export default function Gallery() {
                     <div className='my-5'>
                         <Row className='m-0 p-0'>
                             <Col className='p-0'>
-                            <div className='d-flex' style={{overflowX: "scroll", justifyContent:"space-between", gap:"24px"}}>
+                            <div className='d-flex remove-scrollbar' style={{overflowX: "scroll", justifyContent:"space-between", gap:"24px"}}>
                                 <div className='p-0'>
                                     <img
                                         src="images/gallery_1.png"

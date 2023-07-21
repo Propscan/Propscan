@@ -6,6 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import "./expert.css"
+import Carousel from '../utils/carousel/Carousel';
 
 export default function Experts() {
     return (
@@ -22,36 +23,44 @@ export default function Experts() {
                         <div className='my-5'>
                             <Row className='m-0 p-0'>
                                 <Col className='p-0'>
-                                    <div className='d-flex' style={{ overflow: "scroll", justifyContent: "space-between" }}>
+                                    <Carousel slides={4} responsive={[[1400,3], [1024,2], [780,1]]} items={[
                                         <div className='p-2'>
                                             <Expert
                                                 src="images/expert_1.png"
                                                 name="Mr. Brijlal Kumar"
                                                 convRate="91%"
                                             />
-                                        </div>
+                                        </div>,
                                         <div className='p-2'>
                                             <Expert
                                                 src="images/expert_2.png"
                                                 name="Mr. Brijlal Kumar"
                                                 convRate="91%"
-                                            />
-                                        </div>
+                                                />
+                                        </div>,
                                         <div className='p-2'>
                                             <Expert
                                                 src="images/expert_3.png"
                                                 name="Mr. Brijlal Kumar"
                                                 convRate="91%"
-                                            />
-                                        </div>
+                                                />
+                                        </div>,
                                         <div className='p-2'>
                                             <Expert
                                                 src="images/expert_4.png"
                                                 name="Mr. Brijlal Kumar"
                                                 convRate="91%"
+                                                verified={false}
                                             />
+                                        </div>,
+                                        <div className='p-2'>
+                                        <Expert
+                                            src="images/expert_3.png"
+                                            name="Mr. Brijlal Kumar"
+                                            convRate="91%"
+                                        />
                                         </div>
-                                    </div>
+                                    ]} />
                                 </Col>
                             </Row>
                         </div>
