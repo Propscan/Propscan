@@ -128,10 +128,29 @@ function CrmNavbar() {
         >
           Sold
         </a>
-        <a href="/" className="nav-link active a_style1">
+        <a
+          href="/properties-dashboard/crm/unlisted"
+          style={{
+            backgroundColor:
+              window.location.pathname === "/properties-dashboard/crm/unlisted"
+                ? "#E8F9FD"
+                : "",
+          }}
+          clas
+          className="nav-link active a_style1"
+        >
           Unlisted
         </a>
-        <a href="/" className="nav-link active a_style1">
+        <a
+          href="/properties-dashboard/crm/archived"
+          className="nav-link active a_style1"
+          style={{
+            backgroundColor:
+              window.location.pathname === "/properties-dashboard/crm/archived"
+                ? "#E8F9FD"
+                : "",
+          }}
+        >
           Archived
         </a>
       </div>

@@ -9,9 +9,8 @@ const getFontData = function (fontSize, fontWeight, args) {
         args["lineHeight"] = "26px"
     if ("color" in args === false)
         args["color"] = "#092C4C"
-    args["fontSize"] = fontSize
-    args["fontWeight"] = fontWeight
-    console.log(args)
+    args["fontSize"] = fontSize;
+    args["fontWeight"] = fontWeight;
     return args
 };
 

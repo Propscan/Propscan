@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Chart from "./Chart";
 import CircularBar from "./CircularBar";
 import Table from "./Table";
-import PropertyItem from "../properties/PropertyItem";
+import PropertyCardSmall from "../property/PropertyCardSmall";
 import Col from "react-bootstrap/Col";
 
 function DashBoardHome() {
@@ -143,7 +143,7 @@ function DashBoardHome() {
       <div style={{ display: "flex", marginLeft: "-7vh" }}>
         <Col md="1" />
         <Col xs="2" md className="p-4">
-          <PropertyItem
+          <PropertyCardSmall
             src="/images/img_image_1prop.png"
             text="0123 Boulevard Street, New Delhi"
             subText1="3 Bedrooms | 2 Bathrooms |"
@@ -152,7 +152,7 @@ function DashBoardHome() {
           />
         </Col>
         <Col xs="3" md className="p-4">
-          <PropertyItem
+          <PropertyCardSmall
             src="/images/img_image_2prop.png"
             text="0123 Boulevard Street, New Delhi"
             subText1="3 Bedrooms | 2 Bathrooms |"
@@ -161,7 +161,7 @@ function DashBoardHome() {
           />
         </Col>
         <Col xs="3" md className="p-4">
-          <PropertyItem
+          <PropertyCardSmall
             src="/images/img_image_3prop.png"
             text="0123 Boulevard Street, New Delhi"
             subText1="3 Bedrooms | 2 Bathrooms |"

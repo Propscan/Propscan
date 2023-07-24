@@ -2,8 +2,8 @@ import React from "react";
 import LoggedInHeader from "../header/LoggedInHeader";
 import DashBoardNavbar from "../propertyForm/DashboardNavbar/DashboardNavbar";
 import { SelectBox } from "../selectbox";
-import PropertyListing from "../properties/PropertyListing";
-import Footer from "../footer/Footer";
+import PropertyListing from "../property/PropertyListing";
+import Footer from "../footer";
 import { useNavigate } from "react-router-dom";
 
 const sortByList = [

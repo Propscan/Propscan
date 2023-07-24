@@ -44,7 +44,7 @@ function DashBoardNavbar() {
         <a
           style={{
             backgroundColor:
-              window.location.pathname === "/properties-dashboard/cma "
+              window.location.pathname === "/properties-dashboard/cma"
                 ? "#E8F9FD"
                 : "",
           }}

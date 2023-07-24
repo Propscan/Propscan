@@ -2,14 +2,14 @@ import React from 'react';
 
 import Blank from "../components/Blank";
 import Header from '../components/header';
-import Metrics from '../components/metrics/Metrics';
-import Properties from "../components/properties/Properties";
-import Info from "../components/info/info";
-import Features from "../components/features/features";
-import Gallery from '../components/gallery/gallery';
-import Clients from '../components/clients/clients';
-import Experts from '../components/experts/experts';
-
+import Metrics from '../components/home/metrics/';
+import HomeProperties from "../components/property/HomeProperties";
+import Info from "../components/home/info";
+import Features from "../components/home/features";
+import Gallery from '../components/home/gallery';
+import Clients from '../components/home/clients';
+import Experts from '../components/home/experts';
+import Footer from '../components/footer';
 
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
         <Blank />
         <Metrics />
         <Blank />
-        <Properties />
+        <HomeProperties />
         <Blank />
         <Info />
         <Blank />
@@ -31,6 +31,7 @@ export default function Home() {
         <Gallery />
         <Clients />
         <Blank />
+        <Footer />
     </div>
   )
 }

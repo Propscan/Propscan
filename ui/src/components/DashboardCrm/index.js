@@ -1,7 +1,7 @@
 import React from "react";
 import LoggedInHeader from "../header/LoggedInHeader";
 import DashBoardNavbar from "../propertyForm/DashboardNavbar/DashboardNavbar";
-import CrmNavbar from "./crmnavbar/CrmNavbar";
+import CrmNavbar from "./CrmNavbar/CrmNavbar";
 import CrmCard from "./Card/CrmCard";
 
 function index() {

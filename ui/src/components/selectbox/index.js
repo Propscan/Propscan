@@ -1,6 +1,5 @@
 import React from "react";
 import Select from "react-select";
-import PropTypes from "prop-types";
 
 const variants = {
   OutlineBluegray900: "outline outline-[0.5px] outline-blue_gray_900",
@@ -8,8 +7,7 @@ const variants = {
 const shapes = { CircleBorder12: "rounded-[12px]" };
 const sizes = { sm: "" };
 
-const SelectBox = React.forwardRef(
-  (
+const SelectBox = (
     {
       children,
       placeholder = "Select",
@@ -26,24 +24,23 @@ const SelectBox = React.forwardRef(
       variant = "",
       size = "",
       ...restProps
-    },
-    ref
+    }
   ) => {
     const [selectedVal, setSelectedVal] = React.useState(value);
-
     const handleChange = (data) => {
       setSelectedVal(data);
+      console.log(data)
+      console.log(onChange)
       if (isMulti) {
         onChange?.(data?.map((d) => d.value) || []);
       } else {
-        onChange?.(data?.value);
+        onChange?.(data.value);
       }
     };
 
     return (
       <>
         <Select
-          ref={ref}
           options={options}
           className={`${className} ${(shape && shapes[shape]) || ""} ${
             (size && sizes[size]) || ""
@@ -52,7 +49,7 @@ const SelectBox = React.forwardRef(
             <div className={placeholderClassName} style={{color:"#0D2855", textAlign:"center", fontSize: "min(max(8.5px, 3vw), 14px)"}}>{placeholder}</div>
           }
           isSearchable={isSearchable}
-          isMulti={isMulti}
+          isMulti={isMulti} 
           components={{
             IndicatorSeparator: () => null,
             ...(indicator && { DropdownIndicator: () => indicator }),
@@ -134,33 +131,5 @@ const SelectBox = React.forwardRef(
       </>
     );
   }
-);
 
-SelectBox.propTypes = {
-  placeholder: PropTypes.string,
-  className: PropTypes.string,
-  options: PropTypes.array,
-  isSearchable: PropTypes.bool,
-  placeholderClassName: PropTypes.string,
-  isMulti: PropTypes.bool,
-  onChange: PropTypes.func,
-  value: PropTypes.string,
-  shape: PropTypes.oneOf(["CircleBorder12"]),
-  variant: PropTypes.oneOf(["OutlineBluegray900"]),
-  size: PropTypes.oneOf(["sm"]),
-};
-
-SelectBox.defaultProps = {
-  placeholder: "Select",
-  className: "",
-  isSearchable: false,
-  placeholderClassName: "",
-  isMulti: false,
-  value: "",
-  shape: "",
-  variant: "",
-  size: "",
-  options: [],
-  onChange: () => {},
-};
 export { SelectBox };

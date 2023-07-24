@@ -5,7 +5,6 @@
   "dependencies": {
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
-    "@faker-js/faker": "^8.0.2",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.4",
     "@testing-library/jest-dom": "^5.16.5",
@@ -14,7 +13,6 @@
     "axios": "^1.4.0",
     "bar": "^0.1.2",
     "bootstrap": "^5.2.3",
-    "faker": "^6.6.6",
     "font-awesome": "^4.7.0",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.7.1",
