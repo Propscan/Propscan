@@ -1,5 +1,5 @@
 import React from "react";
-import CrmNavbar from "../CrmNavbar/CrmNavbar";
+import CrmNavbar from "../crmnavbar";
 import LoggedInHeader from "../../header/LoggedInHeader";
 import DashBoardNavbar from "../../propertyForm/DashboardNavbar/DashboardNavbar";
 import { SelectBox } from "../../selectbox/index";
