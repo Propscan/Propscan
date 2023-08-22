@@ -1,5 +1,5 @@
 import React from "react";
-import "./CrmNavbar.css";
+import "./crmNavbar.css";
 
 function CrmNavbar() {
   return (

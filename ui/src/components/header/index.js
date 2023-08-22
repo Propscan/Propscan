@@ -1,11 +1,10 @@
 import React from "react";
 import "./header.css";
 import {Link} from "react-router-dom";
-import {SelectBox} from "../selectbox"
 
 import Searchbar from "../searchbar";
 
-export default function Header() {
+export default function Header() {  
   const toggleMenu = () => {
     const menu = document.getElementsByClassName("header-menu")[0];
     const body = document.body;

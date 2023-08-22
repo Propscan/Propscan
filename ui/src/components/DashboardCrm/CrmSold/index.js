@@ -1,8 +1,8 @@
 import React from "react";
-import CrmNavbar from "../crmnavbar";
+import CrmNavbar from "../CrmNavbar";
 import LoggedInHeader from "../../header/LoggedInHeader";
 import DashBoardNavbar from "../../propertyForm/DashboardNavbar/DashboardNavbar";
-import { SelectBox } from "../../selectbox/index";
+import { SelectBox } from "../../selectbox";
 import Table from "../Table";
 
 const sortByList = [
@@ -36,7 +36,7 @@ const sortByList = [
   },
 ];
 
-function CrmSold() {
+export default function CrmSold() {
   return (
     <div>
       <LoggedInHeader></LoggedInHeader>
@@ -263,4 +263,3 @@ function CrmSold() {
   );
 }
 
-export default CrmSold;

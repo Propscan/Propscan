@@ -11,9 +11,9 @@ export default function PropertyCardLarge(props) {
                     <div className="col-8 property-name">
                         {props.name}
                     </div>
-                    <div className="col">
+                    {props.reraRegistered && <div className="col">
                         <div className="property-batch">RERA </div>
-                    </div>
+                    </div>}
                     <div className="col-2">
                         <div style={{display:"flex", justifyContent:"flex-end"}}>
                             <div className="info-icon">
@@ -27,7 +27,7 @@ export default function PropertyCardLarge(props) {
                 </div>
                 <div className="row">
                     <div className="col property-desc">
-                    {props.unique_description}
+                    {props.uniqueDescription}
                     </div>
                 </div>
                 <div className="row">

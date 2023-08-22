@@ -29,8 +29,6 @@ const SelectBox = (
     const [selectedVal, setSelectedVal] = React.useState(value);
     const handleChange = (data) => {
       setSelectedVal(data);
-      console.log(data)
-      console.log(onChange)
       if (isMulti) {
         onChange?.(data?.map((d) => d.value) || []);
       } else {

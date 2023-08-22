@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Spinner from 'react-bootstrap/Spinner';
+
 
 import { SelectBox } from '../selectbox';
 import getFontData from '../../utils/getFontData';
@@ -15,6 +17,7 @@ const searchSuggestions = ["Dwarka", "Pitampura", "Greater Kailash", "Defence Co
 export default function Searchbar({defaultClass="searchbar-setter"}) {
   const searchbarSetterOptions = [
     { label: "New Delhi", value: "New Delhi" },
+    { label: "London", value: "London" },
     { label: "Bangalore", value: "Bangalore" },
     { label: "Mumbai", value: "Mumbai" }
   ];
@@ -27,18 +30,22 @@ export default function Searchbar({defaultClass="searchbar-setter"}) {
   const [squery, setSquery] = useState("");
   const [city, setCity] = useState(defaultClass==="searchbar-setter"?"New Delhi":"Buy");
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [loading, setLoading] = useState(false);
   const fetchProperties = async (e) => {
     e.preventDefault();
-    let api = "https://api.propscan.in/property/getfull/type1";
+    let api = "https://api.propscan.in/property/largecard/all";
     if( city !== "" ) api+=`?city=${city}`;
+    if( squery !== "" ) api+=`&locality=${squery}`;
     console.log(api);
     let properties = [];
     try{
+      setLoading(true);
       const response = await fetch(api);
       properties = await response.json();
     } catch(err) {
       console.log(err);
     }
+    setLoading(false);
     console.log(properties);
     navigate(`/properties?city=${city}`, { state: { properties: properties } });
   }
@@ -82,7 +89,13 @@ export default function Searchbar({defaultClass="searchbar-setter"}) {
                     // }}
                 /> */}
                   </div>
-                  <button className='btn-info float-end px-2 py-1' onClick={fetchProperties}><span className='expert-btn-text px-1 px-lg-3'>Search</span></button>
+                  <button className='btn-info float-end px-2 py-1' onClick={fetchProperties}>
+                    <span className='expert-btn-text px-1 px-lg-3'>
+                      {loading?
+                      <Spinner animation="border" role="status" size="sm"></Spinner>
+                      :"Search"}
+                    </span>
+                  </button>
                   {showSuggestions && <div className='search-suggestions'>
                     <span  style={{opacity:"0.5", padding:"7px 24px", ...getFontData("12px", "400")}}>POPULAR SEARCH</span>
                     {searchSuggestions.map((item, index) => (

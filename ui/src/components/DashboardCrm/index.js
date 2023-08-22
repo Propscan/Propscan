@@ -1,10 +1,10 @@
 import React from "react";
 import LoggedInHeader from "../header/LoggedInHeader";
 import DashBoardNavbar from "../propertyForm/DashboardNavbar/DashboardNavbar";
-import CrmNavbar from "./crmnavbar";
+import CrmNavbar from "./CrmNavbar";
 import CrmCard from "./Card/CrmCard";
 
-function index() {
+export default function DashboardCrm() {
   return (
     <div>
       <LoggedInHeader></LoggedInHeader>
@@ -27,4 +27,3 @@ function index() {
   );
 }
 
-export default index;

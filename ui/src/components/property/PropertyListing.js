@@ -177,53 +177,51 @@ export default function PropertyListing(props) {
     const location = useLocation();
     const data = location.state;
     let properties = [];
-    data["properties"] = somedata;
+    // data["properties"] = somedata;
 
     console.log(data["properties"])
-    console.log(props);
-    if(data["properties"].length === 0) {
-        properties = propertiesData;
-    } else {
-        for (const property of data["properties"]) {
-            if(propType !== "" && property["property_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== propType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(bhkType !== "" && property["bhk_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== bhkType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(saleType !== "" && property["listing_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== saleType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(budgetType !== "" && property["expected_price"] > budgetType) continue;
-            if(areaType !== "" && property["area"] > areaType) continue;
-            if(amenitiesType !== "" && property["amenities"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== amenitiesType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(furnishingType !== "" && property["furnishing_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== furnishingType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(postedBy !== "" && property["posted_by"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== postedBy.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(posession !== "" && property["possession_status"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== posession.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(rera !== "" && property["rera_status"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== rera.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            if(sortBy !== "" && property["sort_by"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== sortBy.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
-            properties.push({
-                name: property["unique_description"],
-                propertyImage:  property["main_image_link"] || "images/img_prop_3.png",
-                dealerName: "Cressida's Real Estate",
-                possessionStartTime: "Dec, 2023",
-                avgPrice: `Rs. ${getFormatedRate(property["price_per_sq_ft"])} /sq.ft`,
-                priceRate: `Rs ${getFormatedRate(property["expected_price"])} - ${getFormatedRate(parseInt(property["expected_price"])+10000)}`,
-                unique_description: property["location_advantages"]
-            })
-        }
+    for (const property of data["properties"]) {
+        if(propType !== "" && property["property_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== propType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(bhkType !== "" && property["bhk_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== bhkType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(saleType !== "" && property["listing_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== saleType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(budgetType !== "" && property["expected_price"] > budgetType) continue;
+        if(areaType !== "" && property["area"] > areaType) continue;
+        if(amenitiesType !== "" && property["amenities"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== amenitiesType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(furnishingType !== "" && property["furnishing_type"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== furnishingType.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(postedBy !== "" && property["posted_by"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== postedBy.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(posession !== "" && property["possession_status"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== posession.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(rera !== "" && property["rera_status"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== rera.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        if(sortBy !== "" && property["sort_by"].toLowerCase().replace(/[^a-z0-9]/gi, '') !== sortBy.toLowerCase().replace(/[^a-z0-9]/gi, '')) continue;
+        properties.push({
+            id: property["id"],
+            name: property["locality_society"],
+            propertyImage:  property["main_image_link"] || "images/img_prop_3.png",
+            possessionStartTime: property["availability_status"].replace(/_/g, " "),
+            avgPrice: `Rs. ${getFormatedRate(property["price_per_sq_ft"])}/sq.ft`,
+            priceRate: `Rs ${getFormatedRate(property["expected_price"])} - ${getFormatedRate(parseInt(property["expected_price"])+10000)}`,
+            uniqueDescription: property["location_advantages"],
+            dealerName: property["user_display_name"],
+            reraRegistered: property["rera_registered"]
+        })
     }
+    
 
     return (
         <>
             <div className="d-none d-md-block">
                 {properties.length>0?properties.map((props, index) =>
-                    <div className='properties' key={index} onClick={() => navigate("/property")}>
+                    <div className='properties' key={index} onClick={() => navigate(`/property/${props["id"]}`)}>
                         <PropertyCardLarge {...props}  />
                     </div>
                 ): <p className='text-center p-5'>Duhh, There is no property to display :(</p>}
             </div>
             <div className="d-block d-md-none">
-                {properties.lenght>0?(<Row className='my-4'>
+                {properties.length>0? (<Row className='my-4'>
                     {properties.map((props, index) =>
                     <div key={index}>
                         <Col xs="1" ></Col>
                             <Col xs="10" className='mb-4'
-                                onClick={() => navigate("/property")}
+                                onClick={() => navigate(`/property/${props["id"]}`)}
                             >
                                 <PropertyCardSmall
                                     src={props.propertyImage}
